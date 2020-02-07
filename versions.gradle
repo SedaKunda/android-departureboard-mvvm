@@ -1,0 +1,4 @@
+ext.deps = [:]
+def versions = [:]
+
+ext.versions = versions

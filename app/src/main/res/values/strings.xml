@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DepartureBoard</string>
+    <string name="from">From:</string>
+    <string name="to">To:</string>
+    <string name="get_times">Get Times</string>
+    <string name="startingPointQuestion">Where are you coming from?</string>
+    <string name="destinationQuestion">Where are you going?</string>
+</resources>
