@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DepartureBoard</string>
+    <string name="destinationQuestion">Unaenda wapi?</string>
+    <string name="from">Kutoka:</string>
+    <string name="get_times">Pata wakati</string>
+    <string name="startingPointQuestion">Unatoka wapi?</string>
+    <string name="to">Kwa:</string>
+</resources>
