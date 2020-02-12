@@ -9,23 +9,30 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/fromText"
-        android:layout_width="68dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="11dp"
-        android:text="@string/from"
-        app:layout_constraintBottom_toTopOf="@+id/toText"
-        app:layout_constraintEnd_toStartOf="@+id/departureText"
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="341dp"
+        android:text="@string/departures"
+        app:layout_constraintBottom_toTopOf="@+id/fromText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/fromText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/from"
+        app:layout_constraintBottom_toTopOf="@+id/toText"
+        app:layout_constraintEnd_toStartOf="@+id/departureText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
+
+    <TextView
         android:id="@+id/toText"
-        android:layout_width="64dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="3dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/to"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toStartOf="@+id/destinationText"
@@ -34,38 +41,28 @@
 
     <TextView
         android:id="@+id/departureText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="284dp"
-        android:layout_marginBottom="18dp"
-        tools:text="Barking"
         app:layout_constraintBottom_toTopOf="@+id/destinationText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fromText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/titleText"
+        tools:text="Barking" />
 
     <TextView
         android:id="@+id/destinationText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="275dp"
-        android:layout_marginBottom="8dp"
-        tools:text="Waterloo"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/toText"
-        app:layout_constraintTop_toBottomOf="@+id/departureText" />
+        app:layout_constraintTop_toBottomOf="@+id/departureText"
+        tools:text="Waterloo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="402dp"
-        android:layout_height="607dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

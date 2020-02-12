@@ -24,8 +24,22 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "APP_KEY", "\"" + getAppKey() + "\"")
+            buildConfigField("String", "APP_ID", "\"5262611a\"")
+        }
+        debug {
+            buildConfigField("String", "APP_KEY", "\"" + getAppKey() + "\"")
+            buildConfigField("String", "APP_ID", "\"5262611a\"")
         }
     }
+}
+
+def getAppKey() {
+    def keysFile = file("keys.properties")
+    def keysProperties = new Properties()
+    keysProperties.load(new FileInputStream(keysFile))
+    def appKey = keysProperties['APP_KEY']
+    return appKey
 }
 
 dependencies {
@@ -46,5 +60,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'androidx.fragment:fragment-ktx:1.2.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
 
 }

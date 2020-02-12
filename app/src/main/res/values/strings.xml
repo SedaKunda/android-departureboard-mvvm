@@ -5,4 +5,5 @@
     <string name="get_times">Get Times</string>
     <string name="startingPointQuestion">Where are you coming from?</string>
     <string name="destinationQuestion">Where are you going?</string>
+    <string name="departures" translatable="false">Departures</string>
 </resources>

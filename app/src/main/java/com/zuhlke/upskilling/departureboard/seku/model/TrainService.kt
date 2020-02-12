@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface TrainService {
 
-    @GET("/uk/train/station/{station_code}/live.json")
+    @GET("uk/train/station/{station_code}/live.json")
     fun fetch(
         @Path("station_code") origin: String,
         @Query("app_id") appId: String,
