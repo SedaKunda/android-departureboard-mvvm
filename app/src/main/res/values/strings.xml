@@ -5,5 +5,9 @@
     <string name="get_times">Get Times</string>
     <string name="startingPointQuestion">Where are you coming from?</string>
     <string name="destinationQuestion">Where are you going?</string>
-    <string name="departures" translatable="false">Departures</string>
+    <string name="departures">Departures:</string>
+    <string name="invalidInputForOriginWarning">Please set origin</string>
+    <string name="invalidInputForDestinationWarning">Please set destination</string>
+    <string name="departures_error">No data found</string>
+    <string name="platform" translatable="false">Platform </string>
 </resources>

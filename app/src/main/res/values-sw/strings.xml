@@ -6,4 +6,8 @@
     <string name="get_times">Pata wakati</string>
     <string name="startingPointQuestion">Unatoka wapi?</string>
     <string name="to">Kwa:</string>
+    <string name="departures">Kuondoka:</string>
+    <string name="departures_error">Chochote</string>
+    <string name="invalidInputForOriginWarning">Tafadhali jaza</string>
+    <string name="invalidInputForDestinationWarning">Tafadhali jaza</string>
 </resources>

@@ -6,4 +6,8 @@
     <string name="get_times">Poka Time</string>
     <string name="startingPointQuestion">Mwafuma kwisa?</string>
     <string name="to">To:</string>
+    <string name="departures">Kwambako:</string>
+    <string name="departures_error">Tapali data apa</string>
+    <string name="invalidInputForOriginWarning">Bikapo ishinya lyobe</string>
+    <string name="invalidInputForDestinationWarning">Bikapo ishinya lyobe</string>
 </resources>
