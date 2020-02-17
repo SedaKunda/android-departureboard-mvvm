@@ -16,5 +16,13 @@ interface TrainService {
         @Query("app_key") appKey: String = BuildConfig.APP_KEY
     ): Single<TrainTimes>
 
+    @GET("uk/places.json")
+    fun getStations(
+        @Query("query") query: String,
+        @Query("type") type: String = "train_station",
+        @Query("app_id") appId: String = BuildConfig.APP_ID,
+        @Query("app_key") appKey: String = BuildConfig.APP_KEY
+    ): Single<TrainStations>
+
 }
 

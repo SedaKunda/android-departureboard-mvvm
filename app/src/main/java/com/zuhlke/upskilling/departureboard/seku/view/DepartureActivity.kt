@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zuhlke.upskilling.departureboard.seku.R
 import com.zuhlke.upskilling.departureboard.seku.adapters.DepartureListAdapter
+import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
 import com.zuhlke.upskilling.departureboard.seku.databinding.DepartureTimesBinding
 import com.zuhlke.upskilling.departureboard.seku.utils.hide
 import com.zuhlke.upskilling.departureboard.seku.utils.show
@@ -25,8 +26,10 @@ class DepartureActivity : AppCompatActivity() {
     private lateinit var binding: DepartureTimesBinding
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: DepartureListAdapter
-    private val startLocation by lazy {  intent.getStringExtra(START_DESTINATION)}
-    private val endLocation  by lazy { intent.getStringExtra(END_DESTINATION)}
+    private val originCode by lazy { intent.getStringExtra(ORIGIN_CODE) }
+    private val destinationCode by lazy { intent.getStringExtra(DESTINATION_CODE) }
+    private val originName by lazy { intent.getStringExtra(ORIGIN_NAME) }
+    private val destinationName by lazy { intent.getStringExtra(DESTINATION_NAME) }
     private val model: DepartureViewModel by lazy {
         ViewModelProvider(this).get(DepartureViewModel::class.java)
     }
@@ -36,43 +39,65 @@ class DepartureActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.departure_times)
 
         //update text views
-        departureText.text = startLocation
-        destinationText.text = endLocation
+        departureText.text = originName
+        destinationText.text = destinationName
 
         //observe data
-        model.observeTrainData().observe(this, Observer<TrainTimesResult> { data ->
-            when(data){
-                is TrainTimesResult.Success -> {
+        model.observeData().observe(this, Observer<TrainTimesResult> { data ->
+            when (data) {
+                is ResultIs.Success -> {
                     progressBar.hide()
                     mAdapter.processList(data.data.departures)
                 }
-                is TrainTimesResult.Progress -> progressBar.show()
-                is TrainTimesResult.Error -> {
+                ResultIs.Progress -> {progressBar.show()}
+                is ResultIs.Error -> {
                     progressBar.hide()
                     showToastLong(R.string.departures_error)
                 }
             }
         })
-        model.getTrainData(startLocation, endLocation)
+        model.getTrainStationData(originCode, destinationCode)
 
         mRecyclerView = recyclerView //link recycler view in ui to this recycler view
-        mAdapter = DepartureListAdapter(this) //create adapter
+        mAdapter = DepartureListAdapter() //create adapter
         mRecyclerView.adapter = mAdapter //connect adapter and recycler view
         mRecyclerView.layoutManager = LinearLayoutManager(this) //give recycler view a default layout manager
     }
 
     companion object { //defines how this activity is to be called. This can be reused
-        private const val START_DESTINATION = "start_location"
-        private const val END_DESTINATION = "end_location"
+        private const val ORIGIN_CODE = "start_location_code"
+        private const val DESTINATION_CODE = "end_location_code"
+        private const val ORIGIN_NAME = "start_location_name"
+        private const val DESTINATION_NAME = "end_location_name"
 
-        fun call(context: Activity, startDestination: String, endDestination: String)
-                = context.startActivity(getIntent(context, startDestination, endDestination))
+        fun call(
+            context: Activity,
+            originCode: String,
+            destinationCode: String,
+            originName: String,
+            destinationName: String
+        ) = context.startActivity(
+            getIntent(
+                context,
+                originCode,
+                destinationCode,
+                originName,
+                destinationName
+            )
+        )
 
-        private fun getIntent(context: Context, startDestination: String, endDestination: String)
-                = Intent(context, DepartureActivity::class.java).apply {
-                    putExtra(START_DESTINATION, startDestination)
-                    putExtra(END_DESTINATION, endDestination)
-                }
+        private fun getIntent(
+            context: Context,
+            originCode: String,
+            destinationCode: String,
+            originName: String,
+            destinationName: String
+        ) = Intent(context, DepartureActivity::class.java).apply {
+            putExtra(ORIGIN_CODE, originCode)
+            putExtra(DESTINATION_CODE, destinationCode)
+            putExtra(ORIGIN_NAME, originName)
+            putExtra(DESTINATION_NAME, destinationName)
+        }
     }
 
 }

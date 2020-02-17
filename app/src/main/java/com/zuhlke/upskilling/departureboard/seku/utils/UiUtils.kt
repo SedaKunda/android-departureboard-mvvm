@@ -4,7 +4,9 @@ import android.app.Activity
 import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,5 +27,6 @@ fun <T> Single<T>.toIO() =
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
 
-
-
+fun View.getView(@IdRes idRes:Int): String {
+    return this.findViewById<TextView>(idRes).text.toString()
+}

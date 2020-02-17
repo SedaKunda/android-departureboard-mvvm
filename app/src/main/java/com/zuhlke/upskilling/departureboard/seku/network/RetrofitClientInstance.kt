@@ -24,6 +24,4 @@ object RetrofitClientInstance {
     val retrofitService: TrainService by lazy {
         retrofit.create(TrainService::class.java)
     }
-
-
 }
