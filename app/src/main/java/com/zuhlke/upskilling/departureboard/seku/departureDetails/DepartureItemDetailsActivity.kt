@@ -1,4 +1,4 @@
-package com.zuhlke.upskilling.departureboard.seku.view
+package com.zuhlke.upskilling.departureboard.seku.departureDetails
 
 import android.app.Activity
 import android.content.Context
@@ -11,16 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zuhlke.upskilling.departureboard.seku.R
-import com.zuhlke.upskilling.departureboard.seku.adapters.StopsListAdapter
 import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
+import com.zuhlke.upskilling.departureboard.seku.core.utils.hide
+import com.zuhlke.upskilling.departureboard.seku.core.utils.show
+import com.zuhlke.upskilling.departureboard.seku.core.utils.showToastLong
 import com.zuhlke.upskilling.departureboard.seku.databinding.ActivityDepartureItemDetailsBinding
-import com.zuhlke.upskilling.departureboard.seku.model.All
-import com.zuhlke.upskilling.departureboard.seku.model.Stops
-import com.zuhlke.upskilling.departureboard.seku.utils.hide
-import com.zuhlke.upskilling.departureboard.seku.utils.show
-import com.zuhlke.upskilling.departureboard.seku.utils.showToastLong
-import com.zuhlke.upskilling.departureboard.seku.viewmodel.DepartureItemDetailsViewModel
-import com.zuhlke.upskilling.departureboard.seku.viewmodel.TimetableResult
+import com.zuhlke.upskilling.departureboard.seku.departureDetails.stopsList.StopsListAdapter
+import com.zuhlke.upskilling.departureboard.seku.network.model.All
+import com.zuhlke.upskilling.departureboard.seku.network.model.Stops
 import kotlinx.android.synthetic.main.activity_departure_item_details.*
 
 class DepartureItemDetailsActivity: AppCompatActivity() {
@@ -59,7 +57,10 @@ class DepartureItemDetailsActivity: AppCompatActivity() {
         model.getTimeTable(allList.service_timetable.id)
 
         mRecyclerView = stopsRecyclerView
-        mAdapter = StopsListAdapter(stopsList)
+        mAdapter =
+            StopsListAdapter(
+                stopsList
+            )
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(this)
     }
@@ -68,7 +69,11 @@ class DepartureItemDetailsActivity: AppCompatActivity() {
 
         fun call(context: Activity, all: All
         ) = context.startActivity(
-            getIntent(context, all))
+            getIntent(
+                context,
+                all
+            )
+        )
 
         private fun getIntent(context: Context, all: All
         ) = Intent(context, DepartureItemDetailsActivity::class.java).apply {

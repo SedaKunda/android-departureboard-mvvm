@@ -1,6 +1,6 @@
-package com.zuhlke.upskilling.departureboard.seku.network
+package com.zuhlke.upskilling.departureboard.seku.network.client
 
-import com.zuhlke.upskilling.departureboard.seku.model.CTrainService
+import com.zuhlke.upskilling.departureboard.seku.network.api.CTrainService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,7 +21,8 @@ object CoroutinesClientInstance {
         .build()
 
     val retrofitServiceWithCoroutine: CTrainService by lazy {
-        retrofitWithCoroutine.create(CTrainService::class.java)
+        retrofitWithCoroutine.create(
+            CTrainService::class.java)
     }
 }
 

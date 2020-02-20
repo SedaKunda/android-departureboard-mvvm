@@ -1,4 +1,4 @@
-package com.zuhlke.upskilling.departureboard.seku.view
+package com.zuhlke.upskilling.departureboard.seku.trainsSearch
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,15 +7,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.zuhlke.upskilling.departureboard.seku.R
-import com.zuhlke.upskilling.departureboard.seku.adapters.StationListAdapter
 import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
+import com.zuhlke.upskilling.departureboard.seku.core.utils.checkRequiredField
+import com.zuhlke.upskilling.departureboard.seku.core.utils.getView
+import com.zuhlke.upskilling.departureboard.seku.core.utils.showToastLong
 import com.zuhlke.upskilling.departureboard.seku.databinding.ActivityMainBinding
-import com.zuhlke.upskilling.departureboard.seku.model.StationDetails
-import com.zuhlke.upskilling.departureboard.seku.utils.checkRequiredField
-import com.zuhlke.upskilling.departureboard.seku.utils.getView
-import com.zuhlke.upskilling.departureboard.seku.utils.showToastLong
-import com.zuhlke.upskilling.departureboard.seku.viewmodel.MainActivityViewModel
-import com.zuhlke.upskilling.departureboard.seku.viewmodel.TrainStationsResult
+import com.zuhlke.upskilling.departureboard.seku.departures.DepartureActivity
+import com.zuhlke.upskilling.departureboard.seku.network.model.StationDetails
+import com.zuhlke.upskilling.departureboard.seku.trainsSearch.autocompleteList.StationListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -34,7 +33,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val adapter = StationListAdapter(this, android.R.layout.test_list_item, stationDetails)
+        val adapter =
+            StationListAdapter(
+                this,
+                android.R.layout.test_list_item,
+                stationDetails
+            )
         end_location.setAdapter(adapter)
         start_location.setAdapter(adapter)
 
@@ -64,8 +68,12 @@ class MainActivity : AppCompatActivity() {
 
         getTimesButton.setOnClickListener {
             when {
-                checkRequiredField(start_location) -> showToastLong(R.string.invalidInputForOriginWarning)
-                checkRequiredField(end_location) -> showToastLong(R.string.invalidInputForDestinationWarning)
+                checkRequiredField(
+                    start_location
+                ) -> showToastLong(R.string.invalidInputForOriginWarning)
+                checkRequiredField(
+                    end_location
+                ) -> showToastLong(R.string.invalidInputForDestinationWarning)
                 else -> getTransportTimes()
             }
         }

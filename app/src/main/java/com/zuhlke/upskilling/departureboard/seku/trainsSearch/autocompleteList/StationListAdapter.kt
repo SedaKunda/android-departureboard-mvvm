@@ -1,4 +1,4 @@
-package com.zuhlke.upskilling.departureboard.seku.adapters
+package com.zuhlke.upskilling.departureboard.seku.trainsSearch.autocompleteList
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import com.zuhlke.upskilling.departureboard.seku.R
-import com.zuhlke.upskilling.departureboard.seku.model.StationDetails
+import com.zuhlke.upskilling.departureboard.seku.network.model.StationDetails
 
 
 class StationListAdapter(
@@ -24,7 +24,7 @@ class StationListAdapter(
     override fun getItem(position: Int): StationDetails = values[position]
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val row: View = LayoutInflater.from(parent.context).inflate(R.layout.autocomplete_item, parent, false)
+        val row: View = LayoutInflater.from(parent.context).inflate(R.layout.autocomplete_item_station_list, parent, false)
         val stationName = row.findViewById<TextView>(R.id.station_name)
         val stationCode = row.findViewById<TextView>(R.id.station_code)
         stationName.text = getItem(position).name

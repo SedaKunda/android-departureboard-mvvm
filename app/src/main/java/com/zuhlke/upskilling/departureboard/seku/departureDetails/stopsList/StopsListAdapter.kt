@@ -1,4 +1,4 @@
-package com.zuhlke.upskilling.departureboard.seku.adapters
+package com.zuhlke.upskilling.departureboard.seku.departureDetails.stopsList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,15 +6,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.zuhlke.upskilling.departureboard.seku.R
-import com.zuhlke.upskilling.departureboard.seku.model.ServiceTimetableDetails
-import com.zuhlke.upskilling.departureboard.seku.model.Stops
+import com.zuhlke.upskilling.departureboard.seku.network.model.ServiceTimetableDetails
+import com.zuhlke.upskilling.departureboard.seku.network.model.Stops
 
 class StopsListAdapter (private var stopsList: List<Stops> = emptyList()) :
     RecyclerView.Adapter<StopsListAdapter.StopsViewHolder?>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StopsViewHolder {
-        val mItemView: View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item_stops, parent, false)
-        return StopsViewHolder(mItemView)
+        val mItemView: View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item_stops_list, parent, false)
+        return StopsViewHolder(
+            mItemView
+        )
     }
 
     override fun getItemCount(): Int {

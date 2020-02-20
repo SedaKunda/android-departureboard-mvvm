@@ -1,6 +1,6 @@
-package com.zuhlke.upskilling.departureboard.seku.network
+package com.zuhlke.upskilling.departureboard.seku.network.client
 
-import com.zuhlke.upskilling.departureboard.seku.model.TrainService
+import com.zuhlke.upskilling.departureboard.seku.network.api.TrainService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -22,6 +22,7 @@ object RetrofitClientInstance {
         .build()
 
     val retrofitService: TrainService by lazy {
-        retrofit.create(TrainService::class.java)
+        retrofit.create(
+            TrainService::class.java)
     }
 }

@@ -1,10 +1,10 @@
-package com.zuhlke.upskilling.departureboard.seku.viewmodel
+package com.zuhlke.upskilling.departureboard.seku.departureDetails
 
 import androidx.lifecycle.MutableLiveData
 import com.zuhlke.upskilling.departureboard.seku.core.BaseViewModel
 import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
-import com.zuhlke.upskilling.departureboard.seku.model.ServiceTimetableDetails
-import com.zuhlke.upskilling.departureboard.seku.network.CoroutinesClientInstance
+import com.zuhlke.upskilling.departureboard.seku.network.client.CoroutinesClientInstance
+import com.zuhlke.upskilling.departureboard.seku.network.model.ServiceTimetableDetails
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

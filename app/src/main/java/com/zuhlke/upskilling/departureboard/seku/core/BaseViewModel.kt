@@ -3,7 +3,7 @@ package com.zuhlke.upskilling.departureboard.seku.core
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.zuhlke.upskilling.departureboard.seku.utils.toIO
+import com.zuhlke.upskilling.departureboard.seku.core.utils.toIO
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo

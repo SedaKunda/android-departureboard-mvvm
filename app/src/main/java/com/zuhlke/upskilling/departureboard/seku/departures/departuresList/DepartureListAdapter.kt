@@ -1,4 +1,4 @@
-package com.zuhlke.upskilling.departureboard.seku.adapters
+package com.zuhlke.upskilling.departureboard.seku.departures.departuresList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,16 +6,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.zuhlke.upskilling.departureboard.seku.R
-import com.zuhlke.upskilling.departureboard.seku.model.All
-import com.zuhlke.upskilling.departureboard.seku.model.Departures
+import com.zuhlke.upskilling.departureboard.seku.network.model.All
+import com.zuhlke.upskilling.departureboard.seku.network.model.Departures
 
 
 class DepartureListAdapter(private var departureList: List<All> = emptyList(), private val itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<DepartureListAdapter.DepartureViewHolder?>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DepartureViewHolder {
-        val mItemView: View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item_departures, parent, false)
-        return DepartureViewHolder(mItemView)
+        val mItemView: View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item_departure_list, parent, false)
+        return DepartureViewHolder(
+            mItemView
+        )
     }
 
     override fun getItemCount(): Int {

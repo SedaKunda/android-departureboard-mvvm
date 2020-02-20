@@ -1,4 +1,4 @@
-package com.zuhlke.upskilling.departureboard.seku.model
+package com.zuhlke.upskilling.departureboard.seku.network.model
 
 data class TrainStations (
 

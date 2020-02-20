@@ -1,4 +1,4 @@
-package com.zuhlke.upskilling.departureboard.seku.utils
+package com.zuhlke.upskilling.departureboard.seku.core.utils
 
 import android.app.Activity
 import android.text.TextUtils

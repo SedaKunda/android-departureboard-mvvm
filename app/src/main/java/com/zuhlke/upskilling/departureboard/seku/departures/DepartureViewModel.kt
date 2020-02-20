@@ -1,10 +1,10 @@
-package com.zuhlke.upskilling.departureboard.seku.viewmodel
+package com.zuhlke.upskilling.departureboard.seku.departures
 
 import androidx.lifecycle.MutableLiveData
 import com.zuhlke.upskilling.departureboard.seku.core.BaseViewModel
 import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
-import com.zuhlke.upskilling.departureboard.seku.model.TrainTimes
-import com.zuhlke.upskilling.departureboard.seku.network.RetrofitClientInstance
+import com.zuhlke.upskilling.departureboard.seku.network.client.RetrofitClientInstance
+import com.zuhlke.upskilling.departureboard.seku.network.model.TrainTimes
 
 typealias TrainTimesResult = ResultIs<TrainTimes>
 class DepartureViewModel(private val transportClient: RetrofitClientInstance = RetrofitClientInstance) : BaseViewModel<TrainTimes>() { //pass instance in constructor rather than getData to allow unit testing

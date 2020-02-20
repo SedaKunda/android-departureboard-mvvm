@@ -1,10 +1,10 @@
-package com.zuhlke.upskilling.departureboard.seku.viewmodel
+package com.zuhlke.upskilling.departureboard.seku.trainsSearch
 
 import androidx.lifecycle.MutableLiveData
 import com.zuhlke.upskilling.departureboard.seku.core.BaseViewModel
 import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
-import com.zuhlke.upskilling.departureboard.seku.model.TrainStations
-import com.zuhlke.upskilling.departureboard.seku.network.RetrofitClientInstance
+import com.zuhlke.upskilling.departureboard.seku.network.client.RetrofitClientInstance
+import com.zuhlke.upskilling.departureboard.seku.network.model.TrainStations
 
 typealias TrainStationsResult = ResultIs<TrainStations>
 class MainActivityViewModel(private val transportClient: RetrofitClientInstance = RetrofitClientInstance) :

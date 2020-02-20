@@ -1,4 +1,4 @@
-package com.zuhlke.upskilling.departureboard.seku.model
+package com.zuhlke.upskilling.departureboard.seku.network.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -14,6 +14,7 @@ data class TrainTimes(
     val departures : Departures
 )
 
+//parcelize enables us to pass objects in putExtra
 @Parcelize
 data class All(
     val mode : String,

@@ -1,6 +1,9 @@
-package com.zuhlke.upskilling.departureboard.seku.model
+package com.zuhlke.upskilling.departureboard.seku.network.api
 
 import com.zuhlke.upskilling.departureboard.seku.BuildConfig
+import com.zuhlke.upskilling.departureboard.seku.network.model.ServiceTimetableDetails
+import com.zuhlke.upskilling.departureboard.seku.network.model.TrainStations
+import com.zuhlke.upskilling.departureboard.seku.network.model.TrainTimes
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
