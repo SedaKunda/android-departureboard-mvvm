@@ -15,6 +15,10 @@ android {
         enabled = true
     }
 
+    androidExtensions {
+        experimental = true
+    }
+
     defaultConfig {
         applicationId "com.zuhlke.upskilling.departureboard.seku"
         minSdkVersion 21
@@ -59,7 +63,6 @@ dependencies {
     androidTestImplementation deps.junit_ext
     androidTestImplementation deps.espresso
     implementation deps.material
-    implementation deps.timber
     implementation deps.retrofit
     implementation deps.okhttp_interceptor
     implementation deps.retrofit_converter
@@ -71,4 +74,16 @@ dependencies {
     implementation deps.rxjava2
     implementation deps.rxkotlin
     implementation deps.retrofit_adapter
+    implementation (deps.timber) {
+        because "Timber is better for logging that inbuilt feature. (just trying out 'because' feature)"
+    }
+    implementation "androidx.core:core-ktx:1.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+}
+repositories {
+    mavenCentral()
 }

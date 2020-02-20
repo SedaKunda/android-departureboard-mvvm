@@ -10,4 +10,8 @@
     <string name="invalidInputForDestinationWarning">Please set destination</string>
     <string name="departures_error">No data found</string>
     <string name="platform" translatable="false">Platform </string>
+    <string name="operator">Operator:</string>
+    <string name="departure_time">Departure Time:</string>
+    <string name="expected_departure_time">Expected Time:</string>
+    <string name="callingAt">Calling At:</string>
 </resources>

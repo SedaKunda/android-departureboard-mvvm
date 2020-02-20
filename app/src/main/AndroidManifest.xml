@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.DepartureActivity"/>
+        <activity android:name=".view.DepartureItemDetailsActivity"/>
     </application>
 
 </manifest>

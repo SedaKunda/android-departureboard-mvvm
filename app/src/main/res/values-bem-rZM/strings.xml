@@ -10,4 +10,9 @@
     <string name="departures_error">Tapali data apa</string>
     <string name="invalidInputForOriginWarning">Bikapo ishinya lyobe</string>
     <string name="invalidInputForDestinationWarning">Bikapo ishinya lyobe</string>
+    <string name="departure_time">Departure Time:</string>
+    <string name="expected_departure_time">Expected Time:</string>
+    <string name="operator">Operator:</string>
+    <string name="platform" translatable="false">Platform</string>
+    <string name="callingAt">Calling At:</string>
 </resources>

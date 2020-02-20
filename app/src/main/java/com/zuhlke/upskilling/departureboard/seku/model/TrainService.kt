@@ -2,9 +2,11 @@ package com.zuhlke.upskilling.departureboard.seku.model
 
 import com.zuhlke.upskilling.departureboard.seku.BuildConfig
 import io.reactivex.Single
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface TrainService {
 
@@ -23,6 +25,16 @@ interface TrainService {
         @Query("app_id") appId: String = BuildConfig.APP_ID,
         @Query("app_key") appKey: String = BuildConfig.APP_KEY
     ): Single<TrainStations>
+
+
+}
+
+interface CTrainService {
+    @GET
+    suspend fun getServiceTimeTable(
+        @Url url: String, @Query("app_id") appId: String = BuildConfig.APP_ID,
+        @Query("app_key") appKey: String = BuildConfig.APP_KEY
+    ): Response<ServiceTimetableDetails>
 
 }
 

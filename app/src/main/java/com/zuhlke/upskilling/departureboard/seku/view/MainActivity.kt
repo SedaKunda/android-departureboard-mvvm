@@ -40,12 +40,8 @@ class MainActivity : AppCompatActivity() {
 
         model.observeData().observe(this, Observer<TrainStationsResult> { data ->
             when (data) {
-                is ResultIs.Success -> {
-                    adapter.processList(data.data.member)
-                }
-                is ResultIs.Error -> {
-                    showToastLong(R.string.departures_error)
-                }
+                is ResultIs.Success -> { adapter.processList(data.data.member) }
+                is ResultIs.Error -> { showToastLong(R.string.departures_error) }
             }
         })
 

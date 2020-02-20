@@ -27,10 +27,6 @@ abstract class BaseViewModel<Data> :
             .addTo(disposable)
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        disposable.clear()
-    }
 }
 
 sealed class ResultIs<out Data> {
