@@ -5,3 +5,4 @@ An app that shows the departure board of a UK train station, showing trains that
 - Uses RXJava and Retrofit
 - Integrates with Transport API
 - MVVM architecture
+- Support for different locales
