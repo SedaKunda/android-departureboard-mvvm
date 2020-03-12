@@ -33,7 +33,7 @@ class DepartureListAdapter(private var departureList: List<All> = emptyList(), p
         notifyDataSetChanged()
     }
 
-    class DepartureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class DepartureViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val aimedDepartureTimeItemView: TextView = itemView.findViewById(R.id.departureItemWord)
         private val platformItemView: TextView = itemView.findViewById(R.id.platform)
 
@@ -51,3 +51,5 @@ class DepartureListAdapter(private var departureList: List<All> = emptyList(), p
 interface OnItemClickListener{
     fun onItemClicked(all: All)
 }
+
+//typealias OnItemClickListener2 = (All) -> Unit //same functionality as above interface

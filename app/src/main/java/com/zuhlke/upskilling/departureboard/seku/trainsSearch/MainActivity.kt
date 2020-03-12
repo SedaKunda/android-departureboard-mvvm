@@ -3,7 +3,6 @@ package com.zuhlke.upskilling.departureboard.seku.trainsSearch
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.zuhlke.upskilling.departureboard.seku.R
@@ -11,17 +10,19 @@ import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
 import com.zuhlke.upskilling.departureboard.seku.core.utils.checkRequiredField
 import com.zuhlke.upskilling.departureboard.seku.core.utils.getView
 import com.zuhlke.upskilling.departureboard.seku.core.utils.showToastLong
-import com.zuhlke.upskilling.departureboard.seku.databinding.ActivityMainBinding
 import com.zuhlke.upskilling.departureboard.seku.departures.DepartureActivity
+import com.zuhlke.upskilling.departureboard.seku.domain.GetTrainStationUseCase
+import com.zuhlke.upskilling.departureboard.seku.network.client.RetrofitClientInstance
 import com.zuhlke.upskilling.departureboard.seku.network.model.StationDetails
 import com.zuhlke.upskilling.departureboard.seku.trainsSearch.autocompleteList.StationListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    private val factory = MainViewModelFactory(GetTrainStationUseCase(RetrofitClientInstance.retrofitService))
+    //initialise view model with factory
     private val model: MainActivityViewModel by lazy {
-        ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        ViewModelProvider(this, factory).get(MainActivityViewModel::class.java)
     }
     private lateinit var endLocationCode: String
     private lateinit var startLocationCode: String
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+            setContentView(R.layout.activity_main)
 
         val adapter =
             StationListAdapter(
@@ -44,8 +45,12 @@ class MainActivity : AppCompatActivity() {
 
         model.observeData().observe(this, Observer<TrainStationsResult> { data ->
             when (data) {
-                is ResultIs.Success -> { adapter.processList(data.data.member) }
-                is ResultIs.Error -> { showToastLong(R.string.departures_error) }
+                is ResultIs.Success -> {
+                    adapter.processList(data.data.member)
+                }
+                is ResultIs.Error -> {
+                    showToastLong(R.string.departures_error)
+                }
             }
         })
 

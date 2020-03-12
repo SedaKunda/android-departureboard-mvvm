@@ -7,6 +7,7 @@ import com.zuhlke.upskilling.departureboard.seku.network.client.RetrofitClientIn
 import com.zuhlke.upskilling.departureboard.seku.network.model.TrainTimes
 
 typealias TrainTimesResult = ResultIs<TrainTimes>
+//with a factory we don't need to assign instance in the constructor
 class DepartureViewModel(private val transportClient: RetrofitClientInstance = RetrofitClientInstance) : BaseViewModel<TrainTimes>() { //pass instance in constructor rather than getData to allow unit testing
 
     fun getTrainStationData(origin: String, destination: String) {

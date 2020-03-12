@@ -1,155 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/originText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/from"
+        app:layout_constraintEnd_toStartOf="@+id/originValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/originValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/originText"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Cambridge" />
+
+    <TextView
+        android:id="@+id/destinationText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/to"
+        app:layout_constraintEnd_toStartOf="@+id/destinationValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/originText" />
+
+    <TextView
+        android:id="@+id/destinationValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/destinationText"
+        app:layout_constraintTop_toBottomOf="@+id/originText"
+        tools:text="some destination" />
+
+    <TextView
+        android:id="@+id/platformText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/platform"
+        app:layout_constraintEnd_toStartOf="@+id/platformValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/destinationText" />
+
+    <TextView
+        android:id="@+id/platformValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/platformText"
+        app:layout_constraintTop_toBottomOf="@+id/destinationText"
+        tools:text="platform" />
+
+    <TextView
+        android:id="@+id/operatorText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/operator"
+        app:layout_constraintEnd_toStartOf="@+id/operatorValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/platformText" />
+
+    <TextView
+        android:id="@+id/operatorValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/operatorText"
+        app:layout_constraintTop_toBottomOf="@+id/platformText"
+        tools:text="operator" />
+
+    <TextView
+        android:id="@+id/aimedDepartureText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/departure_time"
+        app:layout_constraintEnd_toStartOf="@+id/aimedDepartureValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operatorText" />
+
+    <TextView
+        android:id="@+id/aimedDepartureValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/aimedDepartureText"
+        app:layout_constraintTop_toBottomOf="@+id/operatorText"
+        tools:text="time" />
+
+    <TextView
+        android:id="@+id/expectedDepartureText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/expected_departure_time"
+        app:layout_constraintEnd_toStartOf="@+id/expectedDepartureValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aimedDepartureText" />
+
+    <TextView
+        android:id="@+id/expectedDepartureValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/expectedDepartureText"
+        app:layout_constraintTop_toBottomOf="@+id/aimedDepartureText"
+        tools:text="time" />
+
+    <TextView
+        android:id="@+id/callingAt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:text="@string/callingAt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expectedDepartureText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stopsRecyclerView"
+        style="@style/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callingAt" />
 
-        <TextView
-            android:id="@+id/originText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/originValue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/from" />
-
-        <TextView
-            android:id="@+id/originValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/originText"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Cambridge" />
-
-        <TextView
-            android:id="@+id/destinationText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/to"
-            app:layout_constraintEnd_toStartOf="@+id/destinationValue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/originText" />
-
-        <TextView
-            android:id="@+id/destinationValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/destinationText"
-            app:layout_constraintTop_toBottomOf="@+id/originText"
-            tools:text="some destination" />
-
-        <TextView
-            android:id="@+id/platformText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/platform"
-            app:layout_constraintEnd_toStartOf="@+id/platformValue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/destinationText"
-            />
-        <TextView
-            android:id="@+id/platformValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="platform"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/platformText"
-            app:layout_constraintTop_toBottomOf="@+id/destinationText"
-            />
-
-        <TextView
-            android:id="@+id/operatorText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/operator"
-            app:layout_constraintEnd_toStartOf="@+id/operatorValue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/platformText"
-            />
-        <TextView
-            android:id="@+id/operatorValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="operator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/operatorText"
-            app:layout_constraintTop_toBottomOf="@+id/platformText"
-            />
-
-        <TextView
-            android:id="@+id/aimedDepartureText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/departure_time"
-            app:layout_constraintEnd_toStartOf="@+id/aimedDepartureValue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/operatorText"
-            />
-        <TextView
-            android:id="@+id/aimedDepartureValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/aimedDepartureText"
-            app:layout_constraintTop_toBottomOf="@+id/operatorText"
-            />
-
-        <TextView
-            android:id="@+id/expectedDepartureText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/expected_departure_time"
-            app:layout_constraintEnd_toStartOf="@+id/expectedDepartureValue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/aimedDepartureText"
-            />
-        <TextView
-            android:id="@+id/expectedDepartureValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="time"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/expectedDepartureText"
-            app:layout_constraintTop_toBottomOf="@+id/aimedDepartureText"
-            />
-
-        <TextView
-            android:id="@+id/callingAt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/callingAt"
-            android:paddingTop="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/expectedDepartureText"
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/stopsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:scrollbars="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/callingAt"
-            style="@style/recyclerView"/>
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@android:style/Widget.Material.ProgressBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.Material.ProgressBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

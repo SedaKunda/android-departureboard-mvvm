@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +14,6 @@ import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
 import com.zuhlke.upskilling.departureboard.seku.core.utils.hide
 import com.zuhlke.upskilling.departureboard.seku.core.utils.show
 import com.zuhlke.upskilling.departureboard.seku.core.utils.showToastLong
-import com.zuhlke.upskilling.departureboard.seku.databinding.ActivityDepartureBinding
 import com.zuhlke.upskilling.departureboard.seku.departureDetails.DepartureItemDetailsActivity
 import com.zuhlke.upskilling.departureboard.seku.departures.departuresList.DepartureListAdapter
 import com.zuhlke.upskilling.departureboard.seku.departures.departuresList.OnItemClickListener
@@ -25,13 +23,13 @@ import kotlinx.android.synthetic.main.activity_departure.*
 class DepartureActivity : AppCompatActivity(),
     OnItemClickListener {
 
-    private lateinit var binding: ActivityDepartureBinding
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: DepartureListAdapter
     private val originCode by lazy { intent.getStringExtra(ORIGIN_CODE) }
     private val destinationCode by lazy { intent.getStringExtra(DESTINATION_CODE) }
     private val originName by lazy { intent.getStringExtra(ORIGIN_NAME) }
     private val destinationName by lazy { intent.getStringExtra(DESTINATION_NAME) }
+    //initialise viewModel with default provider (no factory)
     private val model: DepartureViewModel by lazy {
         ViewModelProvider(this).get(DepartureViewModel::class.java)
     }
@@ -39,7 +37,7 @@ class DepartureActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_departure)
+        setContentView(R.layout.activity_departure)
 
         //update text views
         departureText.text = originName
@@ -50,6 +48,8 @@ class DepartureActivity : AppCompatActivity(),
             when (data) {
                 is ResultIs.Success -> {
                     progressBar.hide()
+//                    mAdapter.submitList(data.data.departures.all)
+                    swipe_layout.isRefreshing=false
                     mAdapter.processList(data.data.departures)
                 }
                 is ResultIs.Progress -> {progressBar.show()}
@@ -69,6 +69,10 @@ class DepartureActivity : AppCompatActivity(),
             ) //create adapter
         mRecyclerView.adapter = mAdapter //connect adapter and recycler view
         mRecyclerView.layoutManager = LinearLayoutManager(this) //give recycler view a default layout manager
+
+        swipe_layout.setOnRefreshListener{
+            model.getTrainStationData(originCode, destinationCode)
+        }
     }
 
     override fun onItemClicked(all: All) {
