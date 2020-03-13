@@ -6,3 +6,4 @@ An app that shows the departure board of a UK train station, showing trains that
 - Integrates with Transport API
 - MVVM architecture
 - Support for different locales
+- Supports Accesibility needs
