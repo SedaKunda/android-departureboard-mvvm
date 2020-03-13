@@ -1,6 +1,8 @@
 package com.zuhlke.upskilling.departureboard.seku.trainsSearch
 
+import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
@@ -61,6 +63,7 @@ class MainActivity : AppCompatActivity() {
             startLocationCode = view.getView(R.id.station_code)
             startLocationName = view.getView(R.id.station_name)
             start_location.setText(startLocationName)
+            hideKeyboard()
         }
         end_location.doOnTextChanged { text, _, _, _ ->
             model.getTrainStationData(text.toString())
@@ -69,6 +72,7 @@ class MainActivity : AppCompatActivity() {
             endLocationCode = view.getView(R.id.station_code)
             endLocationName = view.getView(R.id.station_name)
             end_location.setText(endLocationName)
+            hideKeyboard()
         }
 
         getTimesButton.setOnClickListener {
@@ -92,5 +96,12 @@ class MainActivity : AppCompatActivity() {
             startLocationName,
             endLocationName
         )
+    }
+
+    private fun hideKeyboard() {
+        val inputManager: InputMethodManager? = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        // check if no view has focus:
+        val v = currentFocus ?: return
+        inputManager?.hideSoftInputFromWindow(v.windowToken, 0)
     }
 }

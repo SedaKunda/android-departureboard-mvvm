@@ -25,7 +25,9 @@ class DepartureListAdapter(private var departureList: List<All> = emptyList(), p
     }
 
     override fun onBindViewHolder(holder: DepartureViewHolder, position: Int) {
-        holder.bind(departureList[position], itemClickListener)
+        val data = departureList[position]
+        holder.bind(data, itemClickListener)
+        holder.itemView.contentDescription = "${data.aimed_departure_time} service from platform ${data.platform}"
     }
 
     fun processList(departures: Departures) {

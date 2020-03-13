@@ -6,8 +6,12 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -29,4 +33,13 @@ fun <T> Single<T>.toIO() =
 
 fun View.getView(@IdRes idRes:Int): String {
     return this.findViewById<TextView>(idRes).text.toString()
+}
+
+fun RecyclerView.setDivider(@DrawableRes drawableRes: Int) {
+    val divider = DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL)
+    val drawable = ContextCompat.getDrawable(this.context, drawableRes)
+    drawable?.let {
+        divider.setDrawable(it)
+        addItemDecoration(divider)
+    }
 }

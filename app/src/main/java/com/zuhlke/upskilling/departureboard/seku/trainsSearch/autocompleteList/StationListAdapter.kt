@@ -29,6 +29,7 @@ class StationListAdapter(
         val stationCode = row.findViewById<TextView>(R.id.station_code)
         stationName.text = getItem(position).name
         stationCode.text = getItem(position).station_code
+        row.contentDescription = "${stationName.text} station"
         return row
     }
 

@@ -24,21 +24,12 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="@string/from"
+        android:paddingStart="15dp"
+        android:labelFor="@id/departureText"
         app:layout_constraintBottom_toTopOf="@+id/toText"
         app:layout_constraintEnd_toStartOf="@+id/departureText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText"
-        style="@style/textStyle"/>
-
-    <TextView
-        android:id="@+id/toText"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="@string/to"
-        app:layout_constraintBottom_toTopOf="@+id/swipe_layout"
-        app:layout_constraintEnd_toStartOf="@+id/destinationText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fromText"
         style="@style/textStyle"/>
 
     <TextView
@@ -50,6 +41,19 @@
         app:layout_constraintStart_toEndOf="@+id/fromText"
         app:layout_constraintTop_toBottomOf="@+id/titleText"
         tools:text="Barking" />
+
+    <TextView
+        android:id="@+id/toText"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:text="@string/to"
+        android:labelFor="@id/destinationText"
+        app:layout_constraintBottom_toTopOf="@+id/swipe_layout"
+        app:layout_constraintEnd_toStartOf="@+id/destinationText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fromText"
+        style="@style/textStyle"/>
 
     <TextView
         android:id="@+id/destinationText"
@@ -75,6 +79,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
+        android:contentDescription="@string/departure_details"
+        android:accessibilityPaneTitle="@string/departure_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

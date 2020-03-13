@@ -7,9 +7,32 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/originText"
-        android:layout_width="0dp"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textAlignment="center"
+        style="@style/title"
+        android:text="@string/train_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/stopID"
+        android:focusable="true"
+        android:paddingLeft="15dp"
+        android:paddingRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+    <TextView
+        android:id="@+id/originText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="100dp"
         android:text="@string/from"
         app:layout_constraintEnd_toStartOf="@+id/originValue"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +49,8 @@
 
     <TextView
         android:id="@+id/destinationText"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
+        android:minWidth="100dp"
         android:layout_height="wrap_content"
         android:text="@string/to"
         app:layout_constraintEnd_toStartOf="@+id/destinationValue"
@@ -41,15 +65,27 @@
         app:layout_constraintStart_toEndOf="@+id/destinationText"
         app:layout_constraintTop_toBottomOf="@+id/originText"
         tools:text="some destination" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/serviceInfoID"
+        android:focusable="true"
+        android:paddingLeft="15dp"
+        android:paddingRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stopID">
     <TextView
         android:id="@+id/platformText"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="100dp"
         android:text="@string/platform"
         app:layout_constraintEnd_toStartOf="@+id/platformValue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/destinationText" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/platformValue"
@@ -57,14 +93,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/platformText"
-        app:layout_constraintTop_toBottomOf="@+id/destinationText"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="platform" />
 
     <TextView
         android:id="@+id/operatorText"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/operator"
+        android:minWidth="100dp"
         app:layout_constraintEnd_toStartOf="@+id/operatorValue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/platformText" />
@@ -77,15 +114,26 @@
         app:layout_constraintStart_toEndOf="@+id/operatorText"
         app:layout_constraintTop_toBottomOf="@+id/platformText"
         tools:text="operator" />
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeID"
+        android:focusable="true"
+        android:paddingLeft="15dp"
+        android:paddingRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/serviceInfoID">
     <TextView
         android:id="@+id/aimedDepartureText"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="100dp"
         android:text="@string/departure_time"
         app:layout_constraintEnd_toStartOf="@+id/aimedDepartureValue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/operatorText" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/aimedDepartureValue"
@@ -93,13 +141,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/aimedDepartureText"
-        app:layout_constraintTop_toBottomOf="@+id/operatorText"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="time" />
 
     <TextView
         android:id="@+id/expectedDepartureText"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="100dp"
         android:text="@string/expected_departure_time"
         app:layout_constraintEnd_toStartOf="@+id/expectedDepartureValue"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,20 +158,24 @@
         android:id="@+id/expectedDepartureValue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/expectedDepartureText"
         app:layout_constraintTop_toBottomOf="@+id/aimedDepartureText"
         tools:text="time" />
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
         android:id="@+id/callingAt"
         android:layout_width="0dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:accessibilityPaneTitle="@string/callingAt"
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
         android:text="@string/callingAt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expectedDepartureText" />
+        app:layout_constraintTop_toBottomOf="@id/timeID" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stopsRecyclerView"
@@ -145,4 +198,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

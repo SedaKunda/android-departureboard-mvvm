@@ -24,7 +24,9 @@ class StopsListAdapter (private var stopsList: List<Stops> = emptyList()) :
     }
 
     override fun onBindViewHolder(holder: StopsViewHolder, position: Int) {
-        holder.bind(stopsList[position])
+        val data = stopsList[position]
+        holder.bind(data)
+        holder.itemView.contentDescription = "${data.station_name} from platform ${data.platform} at ${data.aimed_departure_time}"
     }
 
     fun processList(timetable: ServiceTimetableDetails) {

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">DepartureBoard</string>
-    <string name="from">From:</string>
-    <string name="to">To:</string>
+    <string name="from">Start:</string>
+    <string name="to">End:</string>
     <string name="get_times">Get Times</string>
     <string name="startingPointQuestion">Where are you coming from?</string>
     <string name="destinationQuestion">Where are you going?</string>
@@ -11,7 +11,11 @@
     <string name="departures_error">No data found</string>
     <string name="platform" translatable="false">Platform </string>
     <string name="operator">Operator:</string>
-    <string name="departure_time">Departure Time:</string>
-    <string name="expected_departure_time">Expected Time:</string>
+    <string name="departure_time">Departure:</string>
+    <string name="expected_departure_time">Expected:</string>
     <string name="callingAt">Calling At:</string>
+    <string name="station_name" translatable="false">station name</string>
+    <string name="train_details" translatable="false">Train Details</string>
+    <string name="departure_details" translatable="false">Departure details</string>
+    <string name="get_more_details" translatable="false">Get more details</string>
 </resources>

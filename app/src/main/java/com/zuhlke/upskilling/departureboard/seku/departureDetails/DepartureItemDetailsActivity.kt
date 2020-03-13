@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zuhlke.upskilling.departureboard.seku.R
 import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
 import com.zuhlke.upskilling.departureboard.seku.core.utils.hide
+import com.zuhlke.upskilling.departureboard.seku.core.utils.setDivider
 import com.zuhlke.upskilling.departureboard.seku.core.utils.show
 import com.zuhlke.upskilling.departureboard.seku.core.utils.showToastLong
 import com.zuhlke.upskilling.departureboard.seku.departureDetails.stopsList.StopsListAdapter
@@ -60,6 +61,7 @@ class DepartureItemDetailsActivity: AppCompatActivity() {
             )
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager = LinearLayoutManager(this)
+        mRecyclerView.setDivider(R.drawable.row_item_divider)
     }
 
     companion object { //defines how this activity is to be called. This can be reused

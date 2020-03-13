@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zuhlke.upskilling.departureboard.seku.R
 import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
 import com.zuhlke.upskilling.departureboard.seku.core.utils.hide
+import com.zuhlke.upskilling.departureboard.seku.core.utils.setDivider
 import com.zuhlke.upskilling.departureboard.seku.core.utils.show
 import com.zuhlke.upskilling.departureboard.seku.core.utils.showToastLong
 import com.zuhlke.upskilling.departureboard.seku.departureDetails.DepartureItemDetailsActivity
@@ -69,6 +70,7 @@ class DepartureActivity : AppCompatActivity(),
             ) //create adapter
         mRecyclerView.adapter = mAdapter //connect adapter and recycler view
         mRecyclerView.layoutManager = LinearLayoutManager(this) //give recycler view a default layout manager
+        mRecyclerView.setDivider(R.drawable.row_item_divider)
 
         swipe_layout.setOnRefreshListener{
             model.getTrainStationData(originCode, destinationCode)

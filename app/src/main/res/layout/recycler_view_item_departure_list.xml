@@ -14,23 +14,60 @@
             android:id="@+id/departureItemWord"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="3dp"
+            android:paddingLeft="4dp"
+            android:minWidth="40dp"
+            android:paddingRight="4dp"
+            android:minHeight="48dp"
+            android:gravity="center_vertical"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/platform"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toStartOf="@+id/platformText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="16:21" />
 
         <TextView
-            android:id="@+id/platform"
-            android:layout_width="0dp"
+            android:id="@+id/platformText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingLeft="4dp"
+            android:minWidth="40dp"
+            android:paddingRight="4dp"
+            android:minHeight="48dp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toStartOf="@+id/platform"
             app:layout_constraintStart_toEndOf="@+id/departureItemWord"
             app:layout_constraintTop_toTopOf="parent"
-            android:textAlignment="viewEnd"
-            tools:text="Platform 3" />
+            android:labelFor="@id/platform"
+            android:textSize="14sp"
+            android:text="@string/platform" />
+
+        <TextView
+            android:id="@+id/platform"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:minWidth="40dp"
+            android:paddingRight="4dp"
+            android:minHeight="48dp"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toStartOf="@+id/openButton"
+            app:layout_constraintStart_toEndOf="@+id/platformText"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="3" />
+
+        <ImageView
+            android:id="@+id/openButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:contentDescription="@string/get_more_details"
+            android:padding="4dp"
+            android:src="@drawable/ic_chevron_right_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/platform"
+            app:layout_constraintTop_toTopOf="parent"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
