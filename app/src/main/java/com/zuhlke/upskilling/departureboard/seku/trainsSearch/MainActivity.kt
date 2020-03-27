@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.zuhlke.upskilling.departureboard.seku.R
 import com.zuhlke.upskilling.departureboard.seku.core.ResultIs
 import com.zuhlke.upskilling.departureboard.seku.core.utils.checkRequiredField
@@ -86,6 +87,12 @@ class MainActivity : AppCompatActivity() {
                 else -> getTransportTimes()
             }
         }
+
+        Glide.with(this)
+            .load("https://paintingvalley.com/drawings/train-drawing-outline-27.png")
+//            .placeholder(R.drawable.loading_animation)
+//            .error(R.drawable.ic_broken_image)
+            .into(picture)
     }
 
     private fun getTransportTimes() { //DepartureActivity defines what is required for it to be called (clean architecture). call is also reusable
